@@ -1,40 +1,45 @@
-const ordered = document.querySelectorAll('ol li');
-const unordered = document.querySelectorAll('ul li');
-const dinoImgs = document.querySelectorAll('img');
-const meteorButton = document.querySelector('#destroy-all');
+const beginningListItems = document.querySelectorAll('ol li');
 
-function strikeThrough() {
-strikeThrough.target.style.textDecoration = 'line-through';
-}
-for(let i = 0; i < ordered.length; i++) {
-    ordered[i].addEventListener('click', lineThrough)
+const addStrikethrough = function(event) {
+event.target.style.textDecoration = 'line-through';
 }
 
-function fade () {
-    fade.target.style.opacity = '0';
-}
-for (let i = 0; i < unordered.length; i++) {
-    unordered[i].addEventListener('click', fade)
+for (const listItem of beginningListItems) {
+listItem.addEventListener('click', addStrikethrough);
 }
 
-function goAway() {
-    goAway.target.style.width = '0px';
-}
-for (let i = 0; i < ordered.length; i++) {
-    unordered[i].addEventListener('click', goAway)
-}
+const secondListItems = document.querySelectorAll('ul li');
 
-function destroy() {
-    for(let i = 0; i < dinoImgs.length; i++) {
-        dinoImgs[i].style.width = '0px';
-    }
-    for (let i = 0; i < unordered.length; i++) {
-        unordered[i].style.opacity = '0'
-    }
-    for (let i = 0; i < ordered.length; i++) {
-        ordered[i].style.textDecoration = 'line-through'
-    }
-    meteorButton.addEventListener('click', destroy);
+const fade = function(event) {
+event.target.style.opacity = 0;
 }
 
+for (const listItem of secondListItems) {
+listItem.addEventListener('click', fade);
+}
 
+const photos = document.querySelectorAll('#row img');
+
+const collapse = function(event) {
+event.target.style.width = '0px';
+}
+
+for (const photo of photos) {
+picture.addEventListener('click', collapse);
+}
+
+const meteor = document.querySelector('#destroy-all');
+
+const destroyEverything = function() {
+    for (const listItem of firstListItems) {
+    listItem.style.textDecoration = 'line-through';
+}
+    for (const listItem of secondListItems) {
+    listItem.style.opacity = 0;
+}
+    for (const picture of pictures) {
+    picture.style.width = '0px';
+}
+}
+
+meteor.addEventListener('click', destroyEverything);
